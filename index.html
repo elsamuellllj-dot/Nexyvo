@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatiza Nariño — Automatización, soporte técnico y ayuda a empresas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F6F2E7;
+    --paper-line: #DCD3BC;
+    --ink: #262218;
+    --ink-soft: #57503F;
+    --sello: #2F6B52;
+    --sello-dark: #204A39;
+    --oro: #A97325;
+    --white: #FFFDF8;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.5;
+  }
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+  }
+  a{ color: inherit; }
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* HEADER */
+  header{
+    padding: 22px 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .brand span{ color: var(--sello); }
+  nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color: var(--ink-soft);
+    margin-left: 22px;
+  }
+  nav a:hover{ color: var(--sello); }
+
+  /* HERO — receipt style */
+  .hero{
+    padding: 64px 0 40px;
+  }
+  .folio{
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--paper-line);
+    padding-bottom: 18px;
+    margin-bottom: 26px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .hero h1{
+    font-size: clamp(2rem, 5vw, 2.9rem);
+    line-height: 1.12;
+    max-width: 13ch;
+  }
+  .hero p.lead{
+    max-width: 46ch;
+    margin-top: 18px;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .hero-actions{
+    margin-top: 30px;
+    display:flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding: 13px 24px;
+    text-decoration:none;
+    font-weight:600;
+    font-size: 0.95rem;
+    border-radius: 3px;
+  }
+  .btn-primary{
+    background: var(--sello);
+    color: var(--white);
+  }
+  .btn-primary:hover{ background: var(--sello-dark); }
+  .btn-ghost{
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .stamp{
+    position: relative;
+    display:inline-block;
+    margin-top: 46px;
+    padding: 10px 16px;
+    border: 2px solid var(--sello);
+    color: var(--sello);
+    transform: rotate(-2deg);
+    font-family:'Fraunces', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* SERVICES — ledger rows */
+  .services{
+    padding: 46px 0 20px;
+    border-top: 1px solid var(--paper-line);
+  }
+  .services h2{
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  .row{
+    display:grid;
+    grid-template-columns: 42px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-bottom: 1px dashed var(--paper-line);
+  }
+  .row:first-of-type{ border-top: 1px dashed var(--paper-line); }
+  .row .num{
+    font-family:'Fraunces', serif;
+    font-size: 1.4rem;
+    color: var(--oro);
+  }
+  .row h3{
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .row p{
+    margin:0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    max-width: 52ch;
+  }
+
+  /* WHY / TRUST */
+  .why{
+    padding: 46px 0;
+    border-top: 1px solid var(--paper-line);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+  .why h2{ font-size: 1.5rem; grid-column: 1 / -1; margin-bottom: 6px; }
+  .why-item h3{
+    font-size: 1rem;
+    font-family:'Public Sans', sans-serif;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .why-item p{
+    margin:0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+
+  /* CTA — tear-off receipt stub */
+  .cta{
+    margin: 50px 0 60px;
+    background: var(--white);
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    padding: 34px 30px;
+    position: relative;
+  }
+  .cta::before{
+    content:'';
+    position:absolute;
+    top:-1px; left:0; right:0;
+    height: 8px;
+    background-image: radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
+    background-size: 16px 8px;
+    background-position: 0 -4px;
+    background-repeat: repeat-x;
+  }
+  .cta h2{ font-size: 1.4rem; margin-bottom: 10px; }
+  .cta p{ color: var(--ink-soft); margin: 0 0 22px; max-width: 48ch; }
+
+  footer{
+    border-top: 1px solid var(--paper-line);
+    padding: 26px 0 40px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 560px){
+    .why{ grid-template-columns: 1fr; }
+    nav a{ margin-left: 14px; font-size: 0.85rem; }
+    .folio{ flex-direction:column; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Automatiza<span>Nariño</span></div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="folio">
+      <span>Automatización y soporte · Ipiales, Nariño</span>
+      <span>Atención lun–sáb</span>
+    </div>
+    <h1>Automatizo, ordeno y hago crecer tu negocio</h1>
+    <p class="lead">Automatización de procesos, soporte técnico y acompañamiento para que tu empresa gane tiempo, se ponga en regla y venda mejor.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://wa.me/57XXXXXXXXXX" target="_blank">Escríbeme por WhatsApp</a>
+      <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+    </div>
+    <div class="stamp">Automatización · Soporte · Crecimiento</div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <h2>Lo que resuelvo por ti</h2>
+
+    <div class="row">
+      <div class="num">01</div>
+      <div>
+        <h3>Automatización de procesos</h3>
+        <p>Bots de WhatsApp, recordatorios automáticos, integraciones entre tus sistemas y tareas repetitivas que dejan de hacerse a mano.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="num">02</div>
+      <div>
+        <h3>Soporte técnico integral</h3>
+        <p>Mantenimiento de computadores, redes, impresoras y sistemas, más acompañamiento cuando algo falla o necesitas resolver algo rápido.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="num">03</div>
+      <div>
+        <h3>Ayuda a empresas para digitalizarse</h3>
+        <p>Facturación electrónica DIAN, configuración de punto de venta, y asesoría para que tu empresa se formalice y opere de forma más ordenada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap" style="display:contents">
+    <h2>Por qué trabajar conmigo</h2>
+    <div class="why-item">
+      <h3>Pienso en procesos, no solo en tickets</h3>
+      <p>No solo arreglo lo que falla: busco qué tareas de tu día a día se pueden automatizar para que ganes tiempo.</p>
+    </div>
+    <div class="why-item">
+      <h3>Acompañamiento real</h3>
+      <p>No te dejo solo después de instalar: resuelvo dudas y ajusto lo que haga falta mientras te adaptas al cambio.</p>
+    </div>
+    <div class="why-item">
+      <h3>Precios claros</h3>
+      <p>Te doy un presupuesto fijo antes de empezar, sin sorpresas ni cobros ocultos.</p>
+    </div>
+    <div class="why-item">
+      <h3>Cercanía local</h3>
+      <p>Trabajo con empresas de Ipiales y la región, con visitas presenciales cuando se necesitan, no solo por videollamada.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="wrap" style="padding:0; max-width:none;">
+    <h2>¿Listo para simplificar tu negocio?</h2>
+    <p>Cuéntame qué necesitas automatizar o resolver y te respondo el mismo día con un presupuesto claro.</p>
+    <a class="btn btn-primary" href="https://wa.me/57XXXXXXXXXX" target="_blank">Escríbeme por WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Automatiza Nariño</span>
+    <span>Ipiales, Nariño, Colombia</span>
+  </div>
+</footer>
+
+</body>
+</html>
