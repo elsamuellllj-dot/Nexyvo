@@ -3,317 +3,539 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Automatiza Nariño — Automatización, soporte técnico y ayuda a empresas</title>
+<title>Nexyvo — El nexo tecnológico de tu negocio</title>
+<meta name="description" content="Nexyvo: soporte TI, automatización, inteligencia artificial y redes para pymes en Ipiales, Nariño. Llevamos tu negocio al siguiente nivel tecnológico.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --paper: #F6F2E7;
-    --paper-line: #DCD3BC;
-    --ink: #262218;
-    --ink-soft: #57503F;
-    --sello: #2F6B52;
-    --sello-dark: #204A39;
-    --oro: #A97325;
-    --white: #FFFDF8;
+    --bg:#ffffff;
+    --bg-alt:#f2f4fa;
+    --ink:#12141c;
+    --ink-soft:#565c72;
+    --line:#e2e5ee;
+    --blue:#1c4cff;
+    --blue-deep:#0f2fb0;
+    --blue-soft:#eaf0ff;
+    --wsp:#22c55e;
+    --wsp-deep:#16a34a;
+    --maxw:1180px;
   }
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Public Sans', sans-serif;
-    line-height: 1.5;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    margin: 0;
-    color: var(--ink);
+  h1,h2,h3,.brand-word{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
   }
-  a{ color: inherit; }
-  .wrap{
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ul{margin:0;padding:0;list-style:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  @media (max-width:720px){
+    section{padding:64px 0;}
+    .wrap{padding:0 20px;}
   }
 
-  /* HEADER */
+  :focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+
+  /* ---------- Header ---------- */
   header{
-    padding: 22px 0;
-    border-bottom: 1px solid var(--paper-line);
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  header .wrap{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;
   }
-  .brand{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size: 1.05rem;
-    letter-spacing: 0.01em;
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo svg{height:26px;width:auto;}
+  .logo span{font-size:1.25rem;font-weight:700;}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-size:0.95rem;font-weight:500;color:var(--ink-soft);transition:color .15s ease;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--wsp);color:#fff;
+    padding:10px 18px;border-radius:999px;
+    font-weight:600;font-size:0.92rem;
+    transition:background .15s ease, transform .15s ease;
   }
-  .brand span{ color: var(--sello); }
-  nav a{
-    text-decoration:none;
-    font-size:0.92rem;
-    color: var(--ink-soft);
-    margin-left: 22px;
-  }
-  nav a:hover{ color: var(--sello); }
+  .nav-cta:hover{background:var(--wsp-deep);transform:translateY(-1px);}
+  .nav-cta svg{width:16px;height:16px;}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-btn span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.2s;}
 
-  /* HERO — receipt style */
-  .hero{
-    padding: 64px 0 40px;
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;inset:64px 0 auto 0;
+      background:#fff;border-bottom:1px solid var(--line);
+      flex-direction:column;align-items:flex-start;
+      padding:20px 20px 28px;gap:18px;
+      transform:translateY(-120%);opacity:0;pointer-events:none;
+      transition:transform .25s ease, opacity .2s ease;
+    }
+    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    .menu-btn{display:block;}
   }
-  .folio{
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-    border-bottom: 1px dashed var(--paper-line);
-    padding-bottom: 18px;
-    margin-bottom: 26px;
-    display:flex;
-    justify-content:space-between;
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 0;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
+  }
+  .hero-eyebrow-tag{
+    display:inline-block;
+    background:var(--blue-soft);color:var(--blue-deep);
+    font-size:0.85rem;font-weight:600;
+    padding:7px 14px;border-radius:999px;
+    margin-bottom:22px;
   }
   .hero h1{
-    font-size: clamp(2rem, 5vw, 2.9rem);
-    line-height: 1.12;
-    max-width: 13ch;
+    font-size:clamp(2.1rem,4.2vw,3.4rem);
+    line-height:1.08;
+    font-weight:700;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--blue);
   }
   .hero p.lead{
-    max-width: 46ch;
-    margin-top: 18px;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
+    margin-top:22px;font-size:1.12rem;color:var(--ink-soft);max-width:52ch;
   }
-  .hero-actions{
-    margin-top: 30px;
-    display:flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
   .btn{
-    display:inline-block;
-    padding: 13px 24px;
-    text-decoration:none;
-    font-weight:600;
-    font-size: 0.95rem;
-    border-radius: 3px;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:10px;
+    font-weight:600;font-size:0.98rem;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
   }
-  .btn-primary{
-    background: var(--sello);
-    color: var(--white);
+  .btn-primary{background:var(--wsp);color:#fff;}
+  .btn-primary:hover{background:var(--wsp-deep);transform:translateY(-1px);}
+  .btn-primary svg{width:18px;height:18px;}
+  .btn-secondary{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-secondary:hover{border-color:var(--ink);}
+
+  .hero-tags{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:38px;
   }
-  .btn-primary:hover{ background: var(--sello-dark); }
-  .btn-ghost{
-    border: 1px solid var(--ink);
-    color: var(--ink);
+  .hero-tags span{
+    font-size:0.85rem;color:var(--ink-soft);
+    border:1px solid var(--line);padding:6px 12px;border-radius:8px;
   }
 
-  .stamp{
-    position: relative;
-    display:inline-block;
-    margin-top: 46px;
-    padding: 10px 16px;
-    border: 2px solid var(--sello);
-    color: var(--sello);
-    transform: rotate(-2deg);
-    font-family:'Fraunces', serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
+  .hero-art{position:relative;height:380px;}
+  .hero-art svg{width:100%;height:100%;}
+
+  .divider{
+    height:64px;width:100%;
+    background:var(--bg-alt);
+    clip-path:polygon(0 100%, 100% 0, 100% 100%);
+    margin-top:70px;
+  }
+  @media (max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{height:220px;order:-1;}
+    .divider{height:36px;}
   }
 
-  /* SERVICES — ledger rows */
-  .services{
-    padding: 46px 0 20px;
-    border-top: 1px solid var(--paper-line);
+  /* ---------- Section headings ---------- */
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-tag{color:var(--blue);font-weight:600;font-size:0.95rem;margin-bottom:10px;display:block;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:1.05rem;}
+
+  /* ---------- Servicios ---------- */
+  .servicios{background:var(--bg-alt);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);
   }
-  .services h2{
-    font-size: 1.5rem;
-    margin-bottom: 30px;
+  .service-card{
+    background:var(--bg-alt);padding:34px 30px;
+    position:relative;
   }
-  .row{
-    display:grid;
-    grid-template-columns: 42px 1fr;
-    gap: 18px;
-    padding: 22px 0;
-    border-bottom: 1px dashed var(--paper-line);
+  .service-icon{
+    width:46px;height:46px;
+    background:var(--blue);
+    clip-path:polygon(22% 0, 100% 0, 78% 100%, 0 100%);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;
   }
-  .row:first-of-type{ border-top: 1px dashed var(--paper-line); }
-  .row .num{
-    font-family:'Fraunces', serif;
-    font-size: 1.4rem;
-    color: var(--oro);
+  .service-icon svg{width:22px;height:22px;stroke:#fff;}
+  .service-card h3{font-size:1.15rem;font-weight:600;margin-bottom:10px;}
+  .service-card p{color:var(--ink-soft);font-size:0.96rem;}
+  @media (max-width:860px){
+    .service-grid{grid-template-columns:1fr 1fr;}
   }
-  .row h3{
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-  }
-  .row p{
-    margin:0;
-    color: var(--ink-soft);
-    font-size: 0.96rem;
-    max-width: 52ch;
+  @media (max-width:560px){
+    .service-grid{grid-template-columns:1fr;}
   }
 
-  /* WHY / TRUST */
-  .why{
-    padding: 46px 0;
-    border-top: 1px solid var(--paper-line);
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 34px;
+  /* ---------- Proceso ---------- */
+  .proceso .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;}
+  .proceso-list{display:flex;flex-direction:column;}
+  .proceso-item{
+    display:flex;gap:22px;padding:26px 0;
+    border-top:1px solid var(--line);
   }
-  .why h2{ font-size: 1.5rem; grid-column: 1 / -1; margin-bottom: 6px; }
-  .why-item h3{
-    font-size: 1rem;
-    font-family:'Public Sans', sans-serif;
-    font-weight: 700;
-    margin-bottom: 6px;
+  .proceso-item:last-child{border-bottom:1px solid var(--line);}
+  .proceso-num{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    color:var(--blue);font-size:1.1rem;min-width:34px;
   }
-  .why-item p{
-    margin:0;
-    font-size: 0.94rem;
-    color: var(--ink-soft);
+  .proceso-item h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;}
+  .proceso-item p{color:var(--ink-soft);font-size:0.95rem;}
+
+  .proceso-visual{
+    background:var(--ink);border-radius:14px;
+    padding:40px;color:#fff;
+    display:flex;flex-direction:column;justify-content:space-between;
+    clip-path:polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+  }
+  .proceso-visual h3{color:#fff;font-size:1.3rem;font-weight:600;line-height:1.35;}
+  .proceso-visual p{color:#b9c0d6;margin-top:16px;font-size:0.95rem;}
+  .proceso-visual .badge{
+    align-self:flex-start;
+    background:var(--blue);color:#fff;
+    padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;
+    margin-bottom:22px;
+  }
+  @media (max-width:860px){
+    .proceso .wrap{grid-template-columns:1fr;}
+    .proceso-visual{order:-1;}
   }
 
-  /* CTA — tear-off receipt stub */
-  .cta{
-    margin: 50px 0 60px;
-    background: var(--white);
-    border: 1px solid var(--paper-line);
-    border-radius: 4px;
-    padding: 34px 30px;
-    position: relative;
+  /* ---------- Cobertura ---------- */
+  .cobertura .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .cobertura-card{
+    background:var(--blue-soft);
+    border-radius:14px;padding:42px;
+    position:relative;overflow:hidden;
   }
-  .cta::before{
-    content:'';
-    position:absolute;
-    top:-1px; left:0; right:0;
-    height: 8px;
-    background-image: radial-gradient(circle, var(--paper) 3px, transparent 3.5px);
-    background-size: 16px 8px;
-    background-position: 0 -4px;
-    background-repeat: repeat-x;
+  .cobertura-card::after{
+    content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;
+    background:var(--blue);opacity:0.14;
+    clip-path:polygon(30% 0, 100% 0, 70% 100%, 0 100%);
   }
-  .cta h2{ font-size: 1.4rem; margin-bottom: 10px; }
-  .cta p{ color: var(--ink-soft); margin: 0 0 22px; max-width: 48ch; }
+  .cobertura-card h3{font-size:1.5rem;font-weight:700;color:var(--blue-deep);}
+  .cobertura-card p{margin-top:14px;color:var(--ink-soft);}
+  .cobertura ul{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .cobertura ul li{display:flex;align-items:flex-start;gap:10px;color:var(--ink-soft);font-size:0.95rem;}
+  .cobertura ul li svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--blue);}
 
-  footer{
-    border-top: 1px solid var(--paper-line);
-    padding: 26px 0 40px;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    gap: 10px;
+  /* ---------- Contacto ---------- */
+  .contacto{background:var(--ink);color:#fff;}
+  .contacto .wrap{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
   }
+  .contacto h2{color:#fff;font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;}
+  .contacto p{color:#b9c0d6;margin-top:16px;font-size:1.05rem;max-width:48ch;}
+  .contacto-panel{
+    background:#181c28;border-radius:14px;padding:36px;
+    border:1px solid #2a2f3f;
+  }
+  .contacto-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 0;border-bottom:1px solid #2a2f3f;
+    font-size:0.95rem;color:#c7ccdd;
+  }
+  .contacto-row:last-of-type{border-bottom:none;}
+  .contacto-row strong{color:#fff;font-weight:600;}
+  .contacto-panel .btn-primary{width:100%;justify-content:center;margin-top:24px;}
 
-  @media (max-width: 560px){
-    .why{ grid-template-columns: 1fr; }
-    nav a{ margin-left: 14px; font-size: 0.85rem; }
-    .folio{ flex-direction:column; gap:4px; }
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;border-top:1px solid var(--line);}
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
   }
+  .footer-brand{display:flex;align-items:center;gap:10px;}
+  .footer-brand svg{height:20px;width:auto;}
+  .footer-brand span{font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  footer p{color:var(--ink-soft);font-size:0.88rem;}
+
+  /* ---------- WhatsApp floating button ---------- */
+  .wsp-float{
+    position:fixed;right:22px;bottom:22px;z-index:60;
+    width:58px;height:58px;border-radius:50%;
+    background:var(--wsp);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(34,197,94,0.4);
+    transition:transform .15s ease;
+  }
+  .wsp-float:hover{transform:scale(1.06);}
+  .wsp-float svg{width:28px;height:28px;fill:#fff;}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap">
-    <div class="brand">Automatiza<span>Nariño</span></div>
-    <nav>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Nexyvo, inicio">
+      <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 34L18 12H26L10 34H2Z" fill="#12141c"/>
+        <path d="M22 4H30L46 22V34L22 4Z" fill="#12141c"/>
+        <path d="M30 4H46L30 22V4Z" fill="#1c4cff"/>
+      </svg>
+      <span class="brand-word">Nexyvo</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
       <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#cobertura">Cobertura</a>
       <a href="#contacto">Contacto</a>
+      <!-- TODO: reemplaza NUMERO_WHATSAPP por tu número en formato internacional sin + ni espacios, ej: 573001234567 -->
+      <a class="nav-cta" href="https://wa.me/NUMERO_WHATSAPP?text=Hola%20Nexyvo%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.15c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.37c.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.63.48.24.57.81 1.97.88 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+        WhatsApp
+      </a>
     </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="folio">
-      <span>Automatización y soporte · Ipiales, Nariño</span>
-      <span>Atención lun–sáb</span>
-    </div>
-    <h1>Automatizo, ordeno y hago crecer tu negocio</h1>
-    <p class="lead">Automatización de procesos, soporte técnico y acompañamiento para que tu empresa gane tiempo, se ponga en regla y venda mejor.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="https://wa.me/57XXXXXXXXXX" target="_blank">Escríbeme por WhatsApp</a>
-      <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
-    </div>
-    <div class="stamp">Automatización · Soporte · Crecimiento</div>
-  </div>
-</section>
+<main id="top">
 
-<section class="services" id="servicios">
-  <div class="wrap">
-    <h2>Lo que resuelvo por ti</h2>
-
-    <div class="row">
-      <div class="num">01</div>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
       <div>
+        <span class="hero-eyebrow-tag">Ipiales, Nariño</span>
+        <h1>El nexo entre tu negocio<br>y la <em>tecnología</em>.</h1>
+        <p class="lead">En Nexyvo diseñamos, instalamos y mantenemos la tecnología que tu empresa necesita para vender más y perder menos tiempo: soporte TI, automatización de procesos, inteligencia artificial aplicada y redes, pensados para el comercio de la frontera.</p>
+        <div class="hero-actions">
+          <!-- TODO: reemplaza NUMERO_WHATSAPP por tu número real -->
+          <a class="btn btn-primary" href="https://wa.me/NUMERO_WHATSAPP?text=Hola%20Nexyvo%2C%20quiero%20una%20asesor%C3%ADa%20gratuita" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.15c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.37c.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.63.48.24.57.81 1.97.88 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+            Escríbenos por WhatsApp
+          </a>
+          <a class="btn btn-secondary" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-tags">
+          <span>Soporte TI</span>
+          <span>Automatización</span>
+          <span>Inteligencia artificial</span>
+          <span>Redes y conectividad</span>
+          <span>Facturación electrónica</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 300L150 130H210L90 300H30Z" fill="#12141c"/>
+          <path d="M170 40H230L330 190V300L170 40Z" fill="#12141c"/>
+          <path d="M230 40H330L230 190V40Z" fill="#1c4cff"/>
+          <circle cx="330" cy="60" r="6" fill="#1c4cff"/>
+          <circle cx="60" cy="270" r="6" fill="#12141c"/>
+        </svg>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </section>
+
+  <!-- ================= SERVICIOS ================= -->
+  <section class="servicios" id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Servicios</span>
+        <h2>Todo lo que tu negocio necesita en un solo proveedor</h2>
+        <p>Trabajamos con comercios, transportadores y empresas de servicios en la zona fronteriza de Ipiales que necesitan resolver su tecnología sin contratar un equipo interno.</p>
+      </div>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H4z"/><path d="M9 20h6M12 15v5"/></svg></div>
+        <h3>Soporte técnico TI</h3>
+        <p>Mantenimiento de equipos, resolución de fallas, soporte remoto y presencial para que tu negocio nunca se detenga.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z"/></svg></div>
         <h3>Automatización de procesos</h3>
-        <p>Bots de WhatsApp, recordatorios automáticos, integraciones entre tus sistemas y tareas repetitivas que dejan de hacerse a mano.</p>
+        <p>Flujos que conectan tus herramientas y eliminan tareas repetitivas: facturación, reportes, seguimiento de clientes y más.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/></svg></div>
+        <h3>Inteligencia artificial aplicada</h3>
+        <p>Chatbots de WhatsApp con IA, asistentes virtuales y automatización de atención al cliente adaptados a tu operación.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 0 1 16 0"/><path d="M8 18a4 4 0 0 1 8 0"/><circle cx="12" cy="18" r="1.5"/></svg></div>
+        <h3>Redes y conectividad</h3>
+        <p>Diseño e instalación de redes, cableado estructurado y wifi empresarial confiable para locales y bodegas.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <h3>Facturación electrónica y punto de venta</h3>
+        <p>Implementamos facturación electrónica DIAN y sistemas de punto de venta adaptados a comercios pequeños y medianos.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <h3>Transformación digital</h3>
+        <p>Diagnóstico digital, páginas web y presencia en línea para que tu negocio también venda fuera del mostrador.</p>
       </div>
     </div>
+  </section>
 
-    <div class="row">
-      <div class="num">02</div>
+  <!-- ================= PROCESO ================= -->
+  <section class="proceso" id="proceso">
+    <div class="wrap">
       <div>
-        <h3>Soporte técnico integral</h3>
-        <p>Mantenimiento de computadores, redes, impresoras y sistemas, más acompañamiento cuando algo falla o necesitas resolver algo rápido.</p>
+        <div class="section-head">
+          <span class="section-tag">Cómo trabajamos</span>
+          <h2>Un proceso claro, sin tecnicismos</h2>
+        </div>
+
+        <div class="proceso-list">
+          <div class="proceso-item">
+            <span class="proceso-num">01</span>
+            <div>
+              <h3>Diagnóstico</h3>
+              <p>Visitamos tu negocio o revisamos tu operación a distancia para entender qué necesitas de verdad.</p>
+            </div>
+          </div>
+          <div class="proceso-item">
+            <span class="proceso-num">02</span>
+            <div>
+              <h3>Propuesta</h3>
+              <p>Te entregamos un plan concreto, con alcance y costo definidos, sin letra pequeña.</p>
+            </div>
+          </div>
+          <div class="proceso-item">
+            <span class="proceso-num">03</span>
+            <div>
+              <h3>Implementación</h3>
+              <p>Instalamos, configuramos e integramos, con la menor interrupción posible para tu operación diaria.</p>
+            </div>
+          </div>
+          <div class="proceso-item">
+            <span class="proceso-num">04</span>
+            <div>
+              <h3>Soporte continuo</h3>
+              <p>Seguimos disponibles después de la entrega, para ajustes, dudas o crecimiento futuro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proceso-visual">
+        <div>
+          <span class="badge">Asesoría inicial</span>
+          <h3>¿No sabes por dónde empezar? Hablemos primero, sin compromiso.</h3>
+          <p>Muchos negocios en Ipiales pierden tiempo y dinero por procesos manuales o tecnología mal configurada. Una conversación de 15 minutos suele ser suficiente para ver dónde está la oportunidad.</p>
+        </div>
+        <!-- TODO: reemplaza NUMERO_WHATSAPP por tu número real -->
+        <a class="btn btn-primary" href="https://wa.me/NUMERO_WHATSAPP?text=Hola%20Nexyvo%2C%20quiero%20agendar%20una%20asesor%C3%ADa" target="_blank" rel="noopener" style="margin-top:28px;justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.15c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.37c.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.63.48.24.57.81 1.97.88 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+          Agendar por WhatsApp
+        </a>
       </div>
     </div>
+  </section>
 
-    <div class="row">
-      <div class="num">03</div>
+  <!-- ================= COBERTURA ================= -->
+  <section class="cobertura" id="cobertura">
+    <div class="wrap">
       <div>
-        <h3>Ayuda a empresas para digitalizarse</h3>
-        <p>Facturación electrónica DIAN, configuración de punto de venta, y asesoría para que tu empresa se formalice y opere de forma más ordenada.</p>
+        <span class="section-tag">Dónde trabajamos</span>
+        <h2 style="font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;">Con base en Ipiales, entendemos el comercio de frontera</h2>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:1.05rem;">Ipiales es una plaza comercial exigente: alto flujo de clientes, jornadas largas y competencia binacional con Tulcán. Nuestras soluciones están pensadas para ese ritmo, no para un manual genérico.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Atención presencial en Ipiales y alrededores</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Soporte remoto para el resto de Nariño</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Enfoque en pymes: comercio, transporte y servicios</li>
+        </ul>
+      </div>
+      <div class="cobertura-card">
+        <h3>Ipiales, Nariño</h3>
+        <p>Zona de comercio fronterizo con Ecuador. Trabajamos directamente con comerciantes y pequeñas empresas que necesitan tecnología que funcione todos los días, sin complicaciones.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="why">
-  <div class="wrap" style="display:contents">
-    <h2>Por qué trabajar conmigo</h2>
-    <div class="why-item">
-      <h3>Pienso en procesos, no solo en tickets</h3>
-      <p>No solo arreglo lo que falla: busco qué tareas de tu día a día se pueden automatizar para que ganes tiempo.</p>
+  <!-- ================= CONTACTO ================= -->
+  <section class="contacto" id="contacto">
+    <div class="wrap">
+      <div>
+        <h2>Cuéntanos qué necesita tu negocio</h2>
+        <p>Respondemos por WhatsApp en horario laboral. Cuéntanos brevemente tu situación y te contactamos para agendar la asesoría inicial.</p>
+      </div>
+      <div class="contacto-panel">
+        <div class="contacto-row"><span>Ubicación</span><strong>Ipiales, Nariño</strong></div>
+        <div class="contacto-row"><span>Atención</span><strong>Lunes a sábado</strong></div>
+        <div class="contacto-row"><span>Contacto</span><strong>WhatsApp</strong></div>
+        <!-- TODO: reemplaza NUMERO_WHATSAPP por tu número real -->
+        <a class="btn btn-primary" href="https://wa.me/NUMERO_WHATSAPP?text=Hola%20Nexyvo%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.15c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.37c.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.63.48.24.57.81 1.97.88 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+          Escribir a Nexyvo
+        </a>
+      </div>
     </div>
-    <div class="why-item">
-      <h3>Acompañamiento real</h3>
-      <p>No te dejo solo después de instalar: resuelvo dudas y ajusto lo que haga falta mientras te adaptas al cambio.</p>
-    </div>
-    <div class="why-item">
-      <h3>Precios claros</h3>
-      <p>Te doy un presupuesto fijo antes de empezar, sin sorpresas ni cobros ocultos.</p>
-    </div>
-    <div class="why-item">
-      <h3>Cercanía local</h3>
-      <p>Trabajo con empresas de Ipiales y la región, con visitas presenciales cuando se necesitan, no solo por videollamada.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta" id="contacto">
-  <div class="wrap" style="padding:0; max-width:none;">
-    <h2>¿Listo para simplificar tu negocio?</h2>
-    <p>Cuéntame qué necesitas automatizar o resolver y te respondo el mismo día con un presupuesto claro.</p>
-    <a class="btn btn-primary" href="https://wa.me/57XXXXXXXXXX" target="_blank">Escríbeme por WhatsApp</a>
-  </div>
-</section>
+</main>
 
 <footer>
-  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
-    <span>Automatiza Nariño</span>
-    <span>Ipiales, Nariño, Colombia</span>
+  <div class="wrap">
+    <div class="footer-brand">
+      <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="20">
+        <path d="M2 34L18 12H26L10 34H2Z" fill="#12141c"/>
+        <path d="M22 4H30L46 22V34L22 4Z" fill="#12141c"/>
+        <path d="M30 4H46L30 22V4Z" fill="#1c4cff"/>
+      </svg>
+      <span>Nexyvo</span>
+    </div>
+    <p>&copy; <span id="year"></span> Nexyvo — Ipiales, Nariño, Colombia.</p>
   </div>
 </footer>
+
+<!-- TODO: reemplaza NUMERO_WHATSAPP por tu número real -->
+<a class="wsp-float" href="https://wa.me/NUMERO_WHATSAPP?text=Hola%20Nexyvo%2C%20quiero%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.15c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.37c.26-.29.57-.36.76-.36h.55c.18 0 .41-.03.63.48.24.57.81 1.97.88 2.11.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
 </body>
 </html>
